@@ -1,0 +1,6 @@
+{
+  "appTitle": "블로그",
+  "@appTitle": {
+    "description": "Flutter로 작업한 개인 블로그"
+  }
+}

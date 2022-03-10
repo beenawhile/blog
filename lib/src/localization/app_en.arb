@@ -1,0 +1,6 @@
+{
+  "appTitle": "Blog",
+  "@appTitle": {
+    "description": "Personal Blog powered by Flutter"
+  }
+}
