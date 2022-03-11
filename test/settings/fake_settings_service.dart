@@ -1,7 +1,7 @@
 import 'package:blog/src/settings/settings_service.dart';
 import 'package:flutter/material.dart';
 
-class FakeSettingsService with SettingsService {
+class FakeSettingsService extends SettingsService {
   ThemeMode _themeMode = ThemeMode.system;
 
   @override
