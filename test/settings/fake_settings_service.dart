@@ -1,4 +1,4 @@
-import 'package:blog/src/settings/settings_service.dart';
+import 'package:blog/src/settings/infrastructure/settings_service.dart';
 import 'package:flutter/material.dart';
 
 class FakeSettingsService extends SettingsService {

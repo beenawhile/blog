@@ -1,5 +1,6 @@
 import 'package:blog/src/app.dart';
-import 'package:blog/src/settings/settings_controller.dart';
+import 'package:blog/src/settings/application/settings_controller.dart';
+import 'package:blog/src/settings/presentation/settings_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -31,7 +32,7 @@ void main() {
           final service = FakeSettingsService();
           final controller = SettingsController(service);
           await controller.loadSettings();
-          final app = App(settingsController: controller);
+          final app = SettingsScope(controller: controller, child: const App());
 
           await tester.pumpWidget(app);
 

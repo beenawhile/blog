@@ -23,9 +23,9 @@ class SharedPrefSettingsService extends SettingsService {
 
   static const _modeKey = "theme_mode";
 
-  const SharedPrefSettingsService({
-    required SharedPreferences prefs,
-  }) : _prefs = prefs;
+  const SharedPrefSettingsService(
+    this._prefs,
+  );
 
   @override
   Future<ThemeMode> themeMode() async {

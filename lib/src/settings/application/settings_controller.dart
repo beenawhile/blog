@@ -1,4 +1,4 @@
-import 'package:blog/src/settings/settings_service.dart';
+import 'package:blog/src/settings/infrastructure/settings_service.dart';
 import 'package:flutter/material.dart';
 
 /// A class that many Widgets can interact with to read user settings, update
@@ -32,7 +32,7 @@ class SettingsController with ChangeNotifier {
   }
 
   /// Update and persist the ThemeMode based on the user's selection.
-  Future<void> updateThemeMode(ThemeMode? newThemeMode) async {
+  void updateThemeMode(ThemeMode? newThemeMode) {
     if (newThemeMode == null) return;
 
     // Do not perform any work if new and old ThemeMode are identical
@@ -46,6 +46,6 @@ class SettingsController with ChangeNotifier {
 
     // Persist the changes to a local database or the internet using the
     // SettingService.
-    await _settingsService.updateThemeMode(newThemeMode);
+    _settingsService.updateThemeMode(newThemeMode);
   }
 }
