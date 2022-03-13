@@ -1,12 +1,12 @@
+import 'dart:io';
+
+import 'package:blog/src/core/routes/app_router.dart';
+import 'package:blog/src/diary/helper.dart';
 import 'package:blog/src/settings/presentation/settings_scope.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
-import 'settings/application/settings_controller.dart';
-import 'settings/presentation/settings_view.dart';
 
 /// The Widget that configures your application.
 class App extends StatelessWidget {
@@ -16,6 +16,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _router = AppRouter();
     // Glue the SettingsController to the MaterialApp.
     //
     // The AnimatedBuilder Widget listens to the SettingsController for changes.
@@ -23,12 +24,16 @@ class App extends StatelessWidget {
     return AnimatedBuilder(
       animation: SettingsScope.of(context),
       builder: (BuildContext context, Widget? child) {
-        return MaterialApp(
+        return MaterialApp.router(
           // Providing a restorationScopeId allows the Navigator built by the
           // MaterialApp to restore the navigation stack when a user leaves and
           // returns to the app after it has been killed while running in the
           // background.
           restorationScopeId: 'app',
+
+          // Providing a routerDelegate
+          routerDelegate: _router.routerDelegate,
+          routeInformationParser: _router.routeInformationParser,
 
           // Provide the generated AppLocalizations to the MaterialApp. This
           // allows descendant Widgets to display the correct translations
@@ -55,28 +60,19 @@ class App extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(),
+          theme: ThemeData(
+              visualDensity: Platform.isLinux ||
+                      Platform.isMacOS ||
+                      Platform.isWindows ||
+                      kIsWeb
+                  ? VisualDensity.comfortable
+                  : VisualDensity.compact),
           darkTheme: ThemeData.dark(),
           themeMode: SettingsScope.of(context).themeMode,
 
           // Define a function to handle named routes in order to support
           // Flutter web url navigation and deep linking.
-          onGenerateRoute: (RouteSettings routeSettings) {
-            return MaterialPageRoute<void>(
-              settings: routeSettings,
-              builder: (BuildContext context) {
-                switch (routeSettings.name) {
-                  case SettingsView.routeName:
-                    return SettingsView();
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                  default:
-                    return const SampleItemListView();
-                }
-              },
-            );
-          },
+          scrollBehavior: const ConstantScrollBehavior(),
         );
       },
     );
