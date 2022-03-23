@@ -20,7 +20,7 @@ on:
 jobs:
   # Job 이름, flutter_test라는 이름으로 Job이 표시
   ci_cd:
-    name: Unit tests on ${{ matrix.os }}
+    name: CI/CD on ${{ matrix.os }}
     # Runner가 실행되는 환경을 정의하는 부분
     runs-on: ${{ matrix.os }}
     env:
