@@ -61,7 +61,7 @@ jobs:
         run: flutter build web --release
         working-directory: ${{ env.working-directory }}
 
-      - name: Delivery
+      - name: Deliver Web Blog
         run: |
           # 2. change path to [existed lib/main.dart path]/build/web
           cd build/web
