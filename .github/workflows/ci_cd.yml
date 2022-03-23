@@ -66,7 +66,7 @@ jobs:
           # 2. change path to [existed lib/main.dart path]/build/web
           cd build/web
           git init
-          git branch -M gh-pages
+          git config --global init.defaultBranch dev
           # 3. change your email
           git config --global user.email beenawhile@users.noreply.github.com 
           # 4. change your name
@@ -74,5 +74,6 @@ jobs:
           # 5. change your repository
           git add .
           git commit -m "update blog page"
+          git branch -M gh-pages
           git remote add origin https://$@github.com/beenawhile/blog.git
           git push origin gh-pages -f
