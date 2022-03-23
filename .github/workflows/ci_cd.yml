@@ -76,5 +76,5 @@ jobs:
           git add .
           git commit -m "update blog page"
           git branch -M gh-pages
-          git remote add origin https://$@github.com/beenawhile/blog.git
+          git remote add origin https://${{ env.my_secret }}@github.com/beenawhile/blog.git
           git push origin gh-pages -f
