@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:blog/src/core/routes/app_router.dart';
-import 'package:blog/src/diary/helper.dart';
 import 'package:blog/src/settings/presentation/settings_scope.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -60,19 +56,12 @@ class App extends StatelessWidget {
           // Define a light and dark color theme. Then, read the user's
           // preferred ThemeMode (light, dark, or system default) from the
           // SettingsController to display the correct theme.
-          theme: ThemeData(
-              visualDensity: Platform.isLinux ||
-                      Platform.isMacOS ||
-                      Platform.isWindows ||
-                      kIsWeb
-                  ? VisualDensity.comfortable
-                  : VisualDensity.compact),
+          theme: ThemeData(),
           darkTheme: ThemeData.dark(),
           themeMode: SettingsScope.of(context).themeMode,
 
           // Define a function to handle named routes in order to support
           // Flutter web url navigation and deep linking.
-          scrollBehavior: const ConstantScrollBehavior(),
         );
       },
     );

@@ -1,8 +1,6 @@
 import 'package:blog/src/settings/presentation/settings_scope.dart';
 import 'package:flutter/material.dart';
 
-import '../application/settings_controller.dart';
-
 /// Displays the various settings that can be customized by the user.
 ///
 /// When a user changes a setting, the SettingsController is updated and
