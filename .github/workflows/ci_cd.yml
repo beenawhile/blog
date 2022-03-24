@@ -57,10 +57,5 @@ jobs:
         run: flutter test
         working-directory: ${{ env.working-directory }}
 
-      - name: Build Web
-        run: flutter build web --release
-        working-directory: ${{ env.working-directory }}
-
-      - uses: bluefireteam/flutter-gh-pages@v7
-        with:
-          baseHref: /blog/
+      - name: Deploy Flutter web app to github pages
+        uses: jeremynac/flutter-gh-pages@beta
