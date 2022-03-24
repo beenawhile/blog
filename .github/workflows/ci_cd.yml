@@ -25,7 +25,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       working-directory: ./
-      my_secret: $
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -62,19 +61,6 @@ jobs:
         run: flutter build web --release
         working-directory: ${{ env.working-directory }}
 
-      - name: Deliver Web Blog
-        run: |
-          # 2. change path to [existed lib/main.dart path]/build/web
-          cd build/web
-          git config --global init.defaultBranch main
-          git init
-          # 3. change your email
-          git config --global user.email beenawhile@users.noreply.github.com 
-          # 4. change your name
-          git config --global user.name beenawhile
-          # 5. change your repository
-          git add .
-          git commit -m "update blog page"
-          git branch -M gh-pages
-          git remote add origin https://${{ env.my_secret }}@github.com/beenawhile/blog.git
-          git push origin gh-pages -f
+      - uses: bluefireteam/flutter-gh-pages@v7
+        with:
+          baseHref: /blog/
