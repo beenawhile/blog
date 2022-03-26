@@ -69,7 +69,6 @@ void main() {
     'updateThemeMode',
     () {
       const tTheme = 'dark';
-      final tSettingsJson = fixture('settings.json');
       test(
         "shuld pass the call when the call for update is successful",
         () async {
