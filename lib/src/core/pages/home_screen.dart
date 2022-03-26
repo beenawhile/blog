@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-      child: Text('Home Page'),
-    ));
+    return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          actions: [
+            IconButton(
+              onPressed: () => context.push('/settings'),
+              icon: const Icon(Icons.settings),
+            )
+          ],
+        ),
+        body: const Center(
+          child: Text('Home Page'),
+        ));
   }
 }
