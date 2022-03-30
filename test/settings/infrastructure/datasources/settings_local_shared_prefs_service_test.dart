@@ -77,6 +77,8 @@ void main() {
 
           await service.updateThemeMode(tTheme);
 
+          // todo: solve this test issue
+
           verify(() => mockStorage.setString(_key, '{"themeMode":"dark"}'));
         },
       );
