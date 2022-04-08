@@ -38,7 +38,7 @@ class SettingsLocalSharedPrefsService implements SettingsService {
     await _storage.setString(
       _key,
       jsonEncode(
-        _cachedDTO?.toJson() ?? SettingsDTO(themeMode: theme).toJson(),
+        _cachedDTO?.toMap() ?? SettingsDTO(themeMode: theme).toJson(),
       ),
     );
   }

@@ -1,11 +1,24 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class Settings {
+  final String themeMode;
+  const Settings({
+    required this.themeMode,
+  });
 
-part 'settings.freezed.dart';
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
 
-@freezed
-class Settings with _$Settings {
-  const Settings._();
-  const factory Settings({
-    required String themeMode,
-  }) = _Settings;
+    return other is Settings && other.themeMode == themeMode;
+  }
+
+  @override
+  int get hashCode => themeMode.hashCode;
+
+  Settings copyWith({
+    String? themeMode,
+  }) {
+    return Settings(
+      themeMode: themeMode ?? this.themeMode,
+    );
+  }
 }

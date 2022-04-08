@@ -33,7 +33,7 @@ void main() {
               json.decode(fixture('settings_null.json'));
 
           /// act
-          final result = SettingsDTO.fromJson(jsonMap);
+          final result = SettingsDTO.fromMap(jsonMap);
 
           /// assert
           expect(result, tSettingsDTO);
@@ -48,7 +48,7 @@ void main() {
               json.decode(fixture('settings.json'));
 
           /// act
-          final result = SettingsDTO.fromJson(jsonMap);
+          final result = SettingsDTO.fromMap(jsonMap);
 
           /// assert
           expect(result, tSettingsDTODark);
@@ -64,7 +64,7 @@ void main() {
         'should return a JSON map containing the proper data',
         () async {
           /// act
-          final result = tSettingsDTO.toJson();
+          final result = tSettingsDTO.toMap();
 
           /// assert
           final expectedJsonMap = {

@@ -391,8 +391,6 @@ abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
   $Res call({Settings settings});
-
-  $SettingsCopyWith<$Res> get settings;
 }
 
 /// @nodoc
@@ -414,13 +412,6 @@ class __$LoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
           : settings // ignore: cast_nullable_to_non_nullable
               as Settings,
     ));
-  }
-
-  @override
-  $SettingsCopyWith<$Res> get settings {
-    return $SettingsCopyWith<$Res>(_value.settings, (value) {
-      return _then(_value.copyWith(settings: value));
-    });
   }
 }
 

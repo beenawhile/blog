@@ -1,6 +1,5 @@
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/dependency_injection.dart';
-import 'package:blog/src/settings/domain/entities/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -16,27 +15,9 @@ class SettingsScreen extends ConsumerStatefulWidget {
 }
 
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
-  ThemeMode _theme = ThemeMode.system;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(
-      () async {
-        await ref
-            .watch(settingsStateNotifierProvider.notifier)
-            .mapEventToState(const SettingsEvent.loadTheme());
-        _theme = ref.watch(settingsStateNotifierProvider).maybeWhen(
-              orElse: () => ThemeMode.system,
-              loaded: (Settings settings) =>
-                  ThemeMode.values.byName(settings.themeMode),
-            );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final settings = ref.watch(settingsProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -49,10 +30,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         // SettingsController is updated, which rebuilds the MaterialApp.
         child: DropdownButton<ThemeMode>(
           // Read the selected themeMode from the controller
-          value: _theme,
+          value: ThemeMode.values.byName(settings.themeMode),
           // Call the updateThemeMode method any time the user selects a theme.
           onChanged: (ThemeMode? themeMode) {
             if (themeMode != null) {
+              ref.watch(settingsProvider.notifier).state = settings.copyWith(
+                themeMode: themeMode.name,
+              );
+
               ref.read(settingsStateNotifierProvider.notifier).mapEventToState(
                   SettingsEvent.updateThemeMode(themeMode.name));
             }
