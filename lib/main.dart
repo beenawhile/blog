@@ -3,7 +3,6 @@ import 'package:blog/src/settings/infrastructure/datasources/local/settings_loca
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:blog/src/app.dart';
 
@@ -19,12 +18,9 @@ Future<void> main() async {
 
   final _settings = _settingsService.savedSettings.toDomain();
 
-  final _prefs = await SharedPreferences.getInstance();
-
   runApp(
     ProviderScope(
       overrides: [
-        sharedPrefsProvider.overrideWithValue(_prefs),
         settingsHiveServiceProvider.overrideWithValue(_settingsService),
         settingsProvider.overrideWithValue(StateController(_settings))
       ],

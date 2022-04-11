@@ -7,14 +7,12 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'mocks/mock_usecases.dart';
 
 void main() {
   late MockUpdateTheme mockUpdateTheme;
   late MockLoadTheme mockLoadTheme;
-  late SharedPreferences sharedPrefs;
 
   const _internalErrorMessage = 'Internal Error';
 
@@ -28,7 +26,6 @@ void main() {
   ProviderContainer _setProviderContainerForTest() {
     final container = ProviderContainer(
       overrides: [
-        sharedPrefsProvider.overrideWithValue(sharedPrefs),
         loadThemeProvider.overrideWithValue(mockLoadTheme),
         updateThemeProvider.overrideWithValue(mockUpdateTheme),
       ],
@@ -41,8 +38,6 @@ void main() {
     'initial state should be empty',
     () async {
       // should write line underneath for test
-      SharedPreferences.setMockInitialValues({});
-      sharedPrefs = await SharedPreferences.getInstance();
       final container = _setProviderContainerForTest();
       expect(container.read(settingsStateNotifierProvider),
           const SettingsState.empty());
