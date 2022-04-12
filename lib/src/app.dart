@@ -1,3 +1,4 @@
+import 'package:blog/src/core/constants/index.dart';
 import 'package:blog/src/core/routes/app_router.dart';
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/dependency_injection.dart';
@@ -12,13 +13,13 @@ class App extends ConsumerStatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  static final _router = AppRouter();
-
   @override
   ConsumerState<App> createState() => _AppState();
 }
 
 class _AppState extends ConsumerState<App> {
+  static final _router = AppRouter();
+
   @override
   void initState() {
     super.initState();
@@ -36,8 +37,8 @@ class _AppState extends ConsumerState<App> {
     final settings = ref.watch(settingsProvider);
     return MaterialApp.router(
       restorationScopeId: 'app',
-      routerDelegate: App._router.routerDelegate,
-      routeInformationParser: App._router.routeInformationParser,
+      routerDelegate: _router.routerDelegate,
+      routeInformationParser: _router.routeInformationParser,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -50,8 +51,8 @@ class _AppState extends ConsumerState<App> {
       ],
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-      theme: ThemeData(),
-      darkTheme: ThemeData.dark(),
+      theme: AppTheme.light,
+      darkTheme: AppTheme.dark,
       themeMode: ThemeMode.values.byName(settings.themeMode),
     );
   }

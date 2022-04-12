@@ -25,7 +25,7 @@ class AppRouter extends GoRouter {
             GoRoute(
               path: '/practice',
               builder: (context, state) => const ExpandableNavBarScreen(),
-            )
+            ),
           ],
           errorPageBuilder: (context, state) => MaterialPage(
             key: state.pageKey,

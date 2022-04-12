@@ -7,18 +7,23 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          actions: [
-            IconButton(
-              onPressed: () => context.push('/settings'),
-              icon: const Icon(Icons.settings),
-            )
-          ],
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () => context.push('/settings'),
+            icon: const Icon(Icons.settings),
+          ),
+        ],
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: const [],
+          ),
         ),
-        body: const Center(
-          child: Text('Home Page'),
-        ));
+      ),
+    );
   }
 }
