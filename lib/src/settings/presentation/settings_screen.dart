@@ -20,7 +20,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final settings = ref.watch(settingsProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(
+          'Settings',
+          style: TextStyle(
+            color: Theme.of(context).textTheme.headline6?.color,
+          ),
+        ),
+        iconTheme: Theme.of(context).iconTheme,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),

@@ -1,3 +1,4 @@
+import 'package:blog/src/core/usecases/no_params.dart';
 import 'package:blog/src/settings/domain/entities/settings.dart';
 import 'package:blog/src/settings/domain/usecases/load_theme.dart';
 import 'package:dartz/dartz.dart';
@@ -30,7 +31,7 @@ void main() {
       );
 
       /// act
-      final result = await usecase();
+      final result = await usecase(const NoParams());
 
       /// assert
       expect(result, const Right(tTheme));

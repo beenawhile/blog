@@ -10,6 +10,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
+        iconTheme: Theme.of(context).iconTheme,
         actions: [
           IconButton(
             onPressed: () => context.push('/settings'),

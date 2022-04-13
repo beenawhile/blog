@@ -1,3 +1,4 @@
+import 'package:blog/src/core/usecases/no_params.dart';
 import 'package:blog/src/error/domain/failures.dart';
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/application/settings_state.dart';
@@ -22,7 +23,7 @@ class SettingsStateNotifier extends StateNotifier<SettingsState> {
     event.when(
       loadTheme: () async {
         state = const SettingsState.loading();
-        final failureOrResult = await _loadTheme();
+        final failureOrResult = await _loadTheme(const NoParams());
         state = failureOrResult.fold(
           (Failure l) => SettingsState.error(_mapFailureToMessage(l)),
           (Settings r) => SettingsState.loaded(r),

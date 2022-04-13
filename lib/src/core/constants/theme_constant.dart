@@ -1,3 +1,4 @@
+import 'package:blog/src/core/generated/fonts.gen.dart';
 import 'package:flutter/material.dart';
 
 class ThemeConstant {
@@ -15,10 +16,12 @@ class AppTheme {
   static final light = ThemeData(
     brightness: Brightness.light,
     primarySwatch: ThemeConstant.primaryColor,
+    fontFamily: FontFamily.maruburi,
   );
 
   static final dark = ThemeData(
     brightness: Brightness.dark,
     primaryColor: ThemeConstant.primaryColor,
+    fontFamily: FontFamily.maruburi,
   );
 }

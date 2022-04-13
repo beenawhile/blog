@@ -1,3 +1,4 @@
+import 'package:blog/src/core/usecases/no_params.dart';
 import 'package:blog/src/error/domain/failures.dart';
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/application/settings_state.dart';
@@ -20,6 +21,13 @@ void main() {
     () {
       mockUpdateTheme = MockUpdateTheme();
       mockLoadTheme = MockLoadTheme();
+    },
+  );
+
+  setUpAll(
+    () {
+      // any()자리에 해당 Parameter를 넣을 수  있게 만들어줌
+      registerFallbackValue(const NoParams());
     },
   );
 
@@ -127,16 +135,16 @@ void main() {
         () async {
           final container = _setProviderContainerForTest();
 
-          when(() => mockLoadTheme())
+          when(() => mockLoadTheme(any()))
               .thenAnswer((_) async => const Right(tSettings));
 
           container
               .read(settingsStateNotifierProvider.notifier)
               .mapEventToState(const SettingsEvent.loadTheme());
 
-          await untilCalled(mockLoadTheme);
+          await untilCalled(() => mockLoadTheme(any()));
 
-          verify(mockLoadTheme);
+          verify(() => mockLoadTheme(any()));
         },
       );
 
@@ -144,7 +152,7 @@ void main() {
         "should emit [loading, loaded] when getting data succeeds",
         () async {
           final container = _setProviderContainerForTest();
-          when(() => mockLoadTheme()).thenAnswer(
+          when(() => mockLoadTheme(any())).thenAnswer(
             (_) async => const Right(tSettings),
           );
 
@@ -158,7 +166,7 @@ void main() {
           expect(container.read(settingsStateNotifierProvider),
               const SettingsState.loading());
 
-          await untilCalled(() => mockLoadTheme());
+          await untilCalled(() => mockLoadTheme(any()));
 
           expect(container.read(settingsStateNotifierProvider),
               const SettingsState.loaded(tSettings));
@@ -168,7 +176,7 @@ void main() {
         "should emit [loading, error] when getting data fails",
         () async {
           final container = _setProviderContainerForTest();
-          when(() => mockLoadTheme()).thenAnswer(
+          when(() => mockLoadTheme(any())).thenAnswer(
             (_) async => const Left(Failure.internal()),
           );
 
@@ -182,7 +190,7 @@ void main() {
           expect(container.read(settingsStateNotifierProvider),
               const SettingsState.loading());
 
-          await untilCalled(() => mockLoadTheme());
+          await untilCalled(() => mockLoadTheme(any()));
 
           expect(container.read(settingsStateNotifierProvider),
               const SettingsState.error(_internalErrorMessage));

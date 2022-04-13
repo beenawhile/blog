@@ -11,7 +11,7 @@ class UpdateTheme extends Usecase<Unit, String> {
   }) : _repository = repository;
 
   @override
-  Future<Either<Failure, Unit>> call([String? params]) async {
-    return await _repository.updateTheme(params!);
+  Future<Either<Failure, Unit>> call(String params) async {
+    return await _repository.updateTheme(params);
   }
 }
