@@ -18,8 +18,6 @@ class App extends ConsumerStatefulWidget {
 }
 
 class _AppState extends ConsumerState<App> {
-  static final _router = AppRouter();
-
   @override
   void initState() {
     super.initState();
@@ -35,10 +33,12 @@ class _AppState extends ConsumerState<App> {
   @override
   Widget build(BuildContext context) {
     final settings = ref.watch(settingsProvider);
+    final router = ref.watch(appRouterProvider);
+
     return MaterialApp.router(
       restorationScopeId: 'app',
-      routerDelegate: _router.routerDelegate,
-      routeInformationParser: _router.routeInformationParser,
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
