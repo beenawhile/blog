@@ -12,17 +12,17 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
-  final _settingsService = SettingsLocalHiveService();
+  final settingsService = SettingsLocalHiveService();
 
-  await _settingsService.initializeDatabase();
+  await settingsService.initializeDatabase();
 
-  final _settings = _settingsService.savedSettings.toDomain();
+  final settings = settingsService.savedSettings.toDomain();
 
   runApp(
     ProviderScope(
       overrides: [
-        settingsHiveServiceProvider.overrideWithValue(_settingsService),
-        settingsProvider.overrideWithValue(StateController(_settings))
+        settingsHiveServiceProvider.overrideWithValue(settingsService),
+        settingsProvider.overrideWithValue(StateController(settings))
       ],
       child: const App(),
     ),

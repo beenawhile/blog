@@ -1,7 +1,7 @@
+import 'package:blog/src/core/domain/entities/failure.dart';
+import 'package:blog/src/core/domain/usecases/usecase.dart';
 import 'package:dartz/dartz.dart';
 
-import 'package:blog/src/core/usecases/usecase.dart';
-import 'package:blog/src/error/domain/failures.dart';
 import 'package:blog/src/settings/domain/repositories/i_settings_repository.dart';
 
 class UpdateTheme extends Usecase<Unit, String> {

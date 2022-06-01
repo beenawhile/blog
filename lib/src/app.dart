@@ -1,5 +1,5 @@
-import 'package:blog/src/core/constants/index.dart';
-import 'package:blog/src/core/routes/app_router.dart';
+import 'package:blog/src/core/presentation/constants/index.dart';
+import 'package:blog/src/core/presentation/routes/app_router.dart';
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/dependency_injection.dart';
 import 'package:flutter/material.dart';

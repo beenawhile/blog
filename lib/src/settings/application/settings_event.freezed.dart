@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'settings_event.dart';
@@ -11,25 +12,7 @@ part of 'settings_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$SettingsEventTearOff {
-  const _$SettingsEventTearOff();
-
-  _LoadTheme loadTheme() {
-    return const _LoadTheme();
-  }
-
-  _UpdateThemeMode updateThemeMode(String theme) {
-    return _UpdateThemeMode(
-      theme,
-    );
-  }
-}
-
-/// @nodoc
-const $SettingsEvent = _$SettingsEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$SettingsEvent {
@@ -91,20 +74,21 @@ class _$SettingsEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LoadThemeCopyWith<$Res> {
-  factory _$LoadThemeCopyWith(
-          _LoadTheme value, $Res Function(_LoadTheme) then) =
-      __$LoadThemeCopyWithImpl<$Res>;
+abstract class _$$_LoadThemeCopyWith<$Res> {
+  factory _$$_LoadThemeCopyWith(
+          _$_LoadTheme value, $Res Function(_$_LoadTheme) then) =
+      __$$_LoadThemeCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$LoadThemeCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
-    implements _$LoadThemeCopyWith<$Res> {
-  __$LoadThemeCopyWithImpl(_LoadTheme _value, $Res Function(_LoadTheme) _then)
-      : super(_value, (v) => _then(v as _LoadTheme));
+class __$$_LoadThemeCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
+    implements _$$_LoadThemeCopyWith<$Res> {
+  __$$_LoadThemeCopyWithImpl(
+      _$_LoadTheme _value, $Res Function(_$_LoadTheme) _then)
+      : super(_value, (v) => _then(v as _$_LoadTheme));
 
   @override
-  _LoadTheme get _value => super._value as _LoadTheme;
+  _$_LoadTheme get _value => super._value as _$_LoadTheme;
 }
 
 /// @nodoc
@@ -120,7 +104,7 @@ class _$_LoadTheme extends _LoadTheme {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _LoadTheme);
+        (other.runtimeType == runtimeType && other is _$_LoadTheme);
   }
 
   @override
@@ -195,29 +179,29 @@ abstract class _LoadTheme extends SettingsEvent {
 }
 
 /// @nodoc
-abstract class _$UpdateThemeModeCopyWith<$Res> {
-  factory _$UpdateThemeModeCopyWith(
-          _UpdateThemeMode value, $Res Function(_UpdateThemeMode) then) =
-      __$UpdateThemeModeCopyWithImpl<$Res>;
+abstract class _$$_UpdateThemeModeCopyWith<$Res> {
+  factory _$$_UpdateThemeModeCopyWith(
+          _$_UpdateThemeMode value, $Res Function(_$_UpdateThemeMode) then) =
+      __$$_UpdateThemeModeCopyWithImpl<$Res>;
   $Res call({String theme});
 }
 
 /// @nodoc
-class __$UpdateThemeModeCopyWithImpl<$Res>
+class __$$_UpdateThemeModeCopyWithImpl<$Res>
     extends _$SettingsEventCopyWithImpl<$Res>
-    implements _$UpdateThemeModeCopyWith<$Res> {
-  __$UpdateThemeModeCopyWithImpl(
-      _UpdateThemeMode _value, $Res Function(_UpdateThemeMode) _then)
-      : super(_value, (v) => _then(v as _UpdateThemeMode));
+    implements _$$_UpdateThemeModeCopyWith<$Res> {
+  __$$_UpdateThemeModeCopyWithImpl(
+      _$_UpdateThemeMode _value, $Res Function(_$_UpdateThemeMode) _then)
+      : super(_value, (v) => _then(v as _$_UpdateThemeMode));
 
   @override
-  _UpdateThemeMode get _value => super._value as _UpdateThemeMode;
+  _$_UpdateThemeMode get _value => super._value as _$_UpdateThemeMode;
 
   @override
   $Res call({
     Object? theme = freezed,
   }) {
-    return _then(_UpdateThemeMode(
+    return _then(_$_UpdateThemeMode(
       theme == freezed
           ? _value.theme
           : theme // ignore: cast_nullable_to_non_nullable
@@ -243,7 +227,7 @@ class _$_UpdateThemeMode extends _UpdateThemeMode {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UpdateThemeMode &&
+            other is _$_UpdateThemeMode &&
             const DeepCollectionEquality().equals(other.theme, theme));
   }
 
@@ -253,8 +237,8 @@ class _$_UpdateThemeMode extends _UpdateThemeMode {
 
   @JsonKey(ignore: true)
   @override
-  _$UpdateThemeModeCopyWith<_UpdateThemeMode> get copyWith =>
-      __$UpdateThemeModeCopyWithImpl<_UpdateThemeMode>(this, _$identity);
+  _$$_UpdateThemeModeCopyWith<_$_UpdateThemeMode> get copyWith =>
+      __$$_UpdateThemeModeCopyWithImpl<_$_UpdateThemeMode>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -320,11 +304,11 @@ class _$_UpdateThemeMode extends _UpdateThemeMode {
 }
 
 abstract class _UpdateThemeMode extends SettingsEvent {
-  const factory _UpdateThemeMode(String theme) = _$_UpdateThemeMode;
+  const factory _UpdateThemeMode(final String theme) = _$_UpdateThemeMode;
   const _UpdateThemeMode._() : super._();
 
-  String get theme;
+  String get theme => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$UpdateThemeModeCopyWith<_UpdateThemeMode> get copyWith =>
+  _$$_UpdateThemeModeCopyWith<_$_UpdateThemeMode> get copyWith =>
       throw _privateConstructorUsedError;
 }

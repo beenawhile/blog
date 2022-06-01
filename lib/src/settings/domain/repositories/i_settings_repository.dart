@@ -1,4 +1,4 @@
-import 'package:blog/src/error/domain/failures.dart';
+import 'package:blog/src/core/domain/entities/failure.dart';
 import 'package:blog/src/settings/domain/entities/settings.dart';
 import 'package:dartz/dartz.dart';
 

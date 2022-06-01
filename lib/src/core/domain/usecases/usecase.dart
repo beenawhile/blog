@@ -1,5 +1,6 @@
-import 'package:blog/src/error/domain/failures.dart';
 import 'package:dartz/dartz.dart';
+
+import '../entities/failure.dart';
 
 abstract class Usecase<Type, Params> {
   const Usecase();

@@ -1,5 +1,5 @@
-import 'package:blog/src/core/usecases/no_params.dart';
-import 'package:blog/src/error/domain/failures.dart';
+import 'package:blog/src/core/domain/entities/failure.dart';
+import 'package:blog/src/core/domain/entities/no_params.dart';
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/application/settings_state.dart';
 import 'package:blog/src/settings/dependency_injection.dart';
@@ -15,7 +15,7 @@ void main() {
   late MockUpdateTheme mockUpdateTheme;
   late MockLoadTheme mockLoadTheme;
 
-  const _internalErrorMessage = 'Internal Error';
+  const internalErrorMessage = 'Internal Error';
 
   setUp(
     () {
@@ -103,8 +103,8 @@ void main() {
         () async {
           final container = _setProviderContainerForTest();
           addTearDown(container.dispose);
-          when(() => mockUpdateTheme(any()))
-              .thenAnswer((_) async => const Left(Failure.internal()));
+          when(() => mockUpdateTheme(any())).thenAnswer(
+              (_) async => const Left(Failure.internal(internalErrorMessage)));
 
           expect(container.read(settingsStateNotifierProvider),
               const SettingsState.empty());
@@ -119,7 +119,7 @@ void main() {
           await untilCalled(() => mockUpdateTheme(any()));
 
           expect(container.read(settingsStateNotifierProvider),
-              const SettingsState.error(_internalErrorMessage));
+              const SettingsState.error(internalErrorMessage));
         },
       );
     },
@@ -177,7 +177,7 @@ void main() {
         () async {
           final container = _setProviderContainerForTest();
           when(() => mockLoadTheme(any())).thenAnswer(
-            (_) async => const Left(Failure.internal()),
+            (_) async => const Left(Failure.internal(internalErrorMessage)),
           );
 
           expect(container.read(settingsStateNotifierProvider),
@@ -193,7 +193,7 @@ void main() {
           await untilCalled(() => mockLoadTheme(any()));
 
           expect(container.read(settingsStateNotifierProvider),
-              const SettingsState.error(_internalErrorMessage));
+              const SettingsState.error(internalErrorMessage));
         },
       );
     },

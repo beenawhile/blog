@@ -74,8 +74,8 @@ class _MotionCardListViewState extends State<MotionCardListView> {
                 child: _PerspectiveItems(
                   generateItems: widget.visualizedItems - 1,
                   currentIndex: _currentIndex,
-                  children: widget.children,
                   pagePercent: _pagePercent,
+                  children: widget.children,
                 ),
               ),
             ),

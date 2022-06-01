@@ -1,4 +1,4 @@
-import 'package:blog/src/core/usecases/no_params.dart';
+import 'package:blog/src/core/domain/entities/no_params.dart';
 import 'package:blog/src/settings/domain/entities/settings.dart';
 import 'package:blog/src/settings/domain/usecases/load_theme.dart';
 import 'package:dartz/dartz.dart';

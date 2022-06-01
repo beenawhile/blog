@@ -1,5 +1,6 @@
-import 'package:blog/src/core/generated/fonts.gen.dart';
 import 'package:flutter/material.dart';
+
+import '../generated/fonts.gen.dart';
 
 class ThemeConstant {
   const ThemeConstant._();

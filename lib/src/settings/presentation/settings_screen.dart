@@ -47,7 +47,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               );
 
               ref.read(settingsStateNotifierProvider.notifier).mapEventToState(
-                  SettingsEvent.updateThemeMode(themeMode.name));
+                    SettingsEvent.updateThemeMode(themeMode.name),
+                  );
             }
           },
           items: const [

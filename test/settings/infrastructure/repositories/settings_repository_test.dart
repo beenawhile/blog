@@ -1,5 +1,5 @@
-import 'package:blog/src/error/domain/exceptions.dart';
-import 'package:blog/src/error/domain/failures.dart';
+import 'package:blog/src/core/domain/entities/exceptions.dart';
+import 'package:blog/src/core/domain/entities/failure.dart';
 import 'package:blog/src/settings/domain/entities/settings.dart';
 import 'package:blog/src/settings/infrastructure/models/settings_dto.dart';
 import 'package:blog/src/settings/infrastructure/repositories/settings_repository.dart';
@@ -49,13 +49,14 @@ void main() {
         "should throw InternalCacheException when the service call is not successful",
         () async {
           /// arrange
-          when(() => mockService.themeMode).thenThrow(InternalCacheException());
+          when(() => mockService.themeMode)
+              .thenThrow(const InternalCacheException(message: ""));
 
           /// act
           final result = await repository.loadTheme();
 
           /// assert
-          expect(result, const Left(Failure.internal()));
+          expect(result, const Left(Failure.internal("")));
           verify(() => mockService.themeMode);
           verifyNoMoreInteractions(mockService);
         },
@@ -88,13 +89,13 @@ void main() {
         () async {
           /// arrange
           when(() => mockService.updateThemeMode(any()))
-              .thenThrow(InternalCacheException());
+              .thenThrow(const InternalCacheException(message: ""));
 
           /// act
           final result = await repository.updateTheme(tTheme);
 
           /// assert
-          expect(result, const Left(Failure.internal()));
+          expect(result, const Left(Failure.internal("")));
           verify(() => mockService.updateThemeMode(tTheme));
           verifyNoMoreInteractions(mockService);
         },

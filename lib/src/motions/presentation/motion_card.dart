@@ -1,4 +1,4 @@
-import 'package:blog/src/core/constants/index.dart';
+import 'package:blog/src/core/presentation/constants/index.dart';
 import 'package:flutter/material.dart';
 
 import 'package:blog/src/motions/presentation/widget_model/motion.dart';

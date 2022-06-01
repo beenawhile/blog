@@ -1,5 +1,5 @@
-import 'package:blog/src/core/usecases/no_params.dart';
-import 'package:blog/src/error/domain/failures.dart';
+import 'package:blog/src/core/domain/entities/failure.dart';
+import 'package:blog/src/core/domain/entities/no_params.dart';
 import 'package:blog/src/settings/application/settings_event.dart';
 import 'package:blog/src/settings/application/settings_state.dart';
 import 'package:blog/src/settings/domain/entities/settings.dart';
@@ -25,7 +25,7 @@ class SettingsStateNotifier extends StateNotifier<SettingsState> {
         state = const SettingsState.loading();
         final failureOrResult = await _loadTheme(const NoParams());
         state = failureOrResult.fold(
-          (Failure l) => SettingsState.error(_mapFailureToMessage(l)),
+          (Failure l) => SettingsState.error(mapFailureToString(l)),
           (Settings r) => SettingsState.loaded(r),
         );
       },
@@ -33,17 +33,10 @@ class SettingsStateNotifier extends StateNotifier<SettingsState> {
         state = const SettingsState.saving();
         final failureOrResult = await _updateTheme(theme);
         state = failureOrResult.fold(
-          (Failure l) => SettingsState.error(_mapFailureToMessage(l)),
+          (Failure l) => SettingsState.error(mapFailureToString(l)),
           (Unit _) => const SettingsState.saved(),
         );
       },
-    );
-  }
-
-  String _mapFailureToMessage(Failure failure) {
-    return failure.when(
-      internal: () => 'Internal Error',
-      server: () => 'Server Communication Error',
     );
   }
 }
