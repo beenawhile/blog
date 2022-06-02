@@ -1,3 +1,4 @@
+import 'package:blog/src/menu/presentation/screen/spray_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,7 +22,17 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           child: Column(
-            children: const [],
+            children: [
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const SprayScreen(),
+                  ));
+                },
+                child: const Text("Spray"),
+              ),
+            ],
           ),
         ),
       ),
